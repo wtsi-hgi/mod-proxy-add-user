@@ -10,7 +10,7 @@ proxy_add_user: proxy_add_user.c
 	$(APXS) -c proxy_add_user.c
 
 shib_proxy_add_user_proxy.load:  $(APACHE_MOD_AVAILABLE_DIR)/shib2.load $(APACHE_MOD_AVAILABLE_DIR)/proxy.load $(APACHE_MOD_AVAILABLE_DIR)/proxy_http.load
-	cat $(APACHE_MOD_AVAILABLE_DIR)/shib2.load && echo "LoadModule proxy_add_user_module /usr/lib/apache2/modules/proxy_add_user.so" && cat $(APACHE_MOD_AVAILABLE_DIR)/proxy.load $(APACHE_MOD_AVAILABLE_DIR)/proxy_http.load > shib_proxy_add_user_proxy.load 
+	(cat $(APACHE_MOD_AVAILABLE_DIR)/shib2.load && echo "LoadModule proxy_add_user_module /usr/lib/apache2/modules/proxy_add_user.so" && cat $(APACHE_MOD_AVAILABLE_DIR)/proxy.load $(APACHE_MOD_AVAILABLE_DIR)/proxy_http.load) > shib_proxy_add_user_proxy.load 
 
 clean:
 	$(RM) *.la *.lo *.slo *.load
